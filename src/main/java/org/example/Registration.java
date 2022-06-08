@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
 public class Registration extends Utils{
+    LoadProperty loadProperty = new LoadProperty();
+
     private By _MaleGender =  By.xpath( "//input[@id='gender-male']" );
     private By _FirstName = By.xpath( "//input[@name='FirstName']");
     private By _LastName =  By.id( "LastName" );
@@ -20,31 +22,32 @@ public class Registration extends Utils{
         driver.findElement(_MaleGender).click();
 
         //Enter First Name
-        typeText(_FirstName ,"Automation");
+        typeText(_FirstName ,loadProperty.getProperty( "FirstName" ));
 
         //Enter Last Name
-        typeText(_LastName,"LastNameTest" );
+        typeText(_LastName,loadProperty.getProperty( "LastName" ) );
 
         //select day of the birthday
         Select DayOfBirth =new Select( driver.findElement(_SelectTheDayOfBirthDay ) );
-        DayOfBirth.selectByIndex( 7 );
+        int DayOfBirthday = Integer.parseInt( loadProperty.getProperty( "DayOfBirthday" ) );
+        DayOfBirth.selectByIndex(DayOfBirthday);
 
         //select month of the birthday
         Select MonthOfBirth= new Select( driver.findElement( _SelectTheMonthOfBirthDay) );
-        MonthOfBirth.selectByIndex( 3 );
+        MonthOfBirth.selectByVisibleText(loadProperty.getProperty( "MonthOfBirthday" ) );
 
         // select year of the birthday
         Select YearOfBirth = new Select( driver.findElement( _SelectTheYearOfBirthDay ) );
-        YearOfBirth.selectByValue( "1981" );
+        YearOfBirth.selectByValue( loadProperty.getProperty( "YearOfBirthday" ) );
 
         //Enter Email
-        typeText(_EnterEmail,"Automation"+randomDate()+"@bmail.com" );
+        typeText(_EnterEmail,loadProperty.getProperty( "EmailFirstPart" )+randomDate()+loadProperty.getProperty( "EmailLastPart") );
 
         //Enter Password
-        typeText(_EnterPassword,"Auto123" );
+        typeText(_EnterPassword,loadProperty.getProperty( "Password" ) );
 
         //Enter Confirm password
-        typeText( _EnterConfirmPassword,"Auto123" );
+        typeText( _EnterConfirmPassword,loadProperty.getProperty( "ConfirmPassword" ));
 
         //Click register
         clickOnElement(_ClickOnRegister  );

@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class EmailAFriend extends Utils{
+
+    LoadProperty loadProperty = new LoadProperty();
+
     private By _EnterFriendsEmailAddress = By.className( "friend-email" );
     private By _ClickOnSendEmail =  By.xpath( "//form[@action=\"/productemailafriend/1\"]/div[2]" );
     private By _VerifyMessageHasBeenSentToTheFriend =  By.className( "result" );
@@ -12,7 +15,7 @@ public class EmailAFriend extends Utils{
 
     public void enterFriendsEmail(){
         //Enter friend's E-mail address
-        typeText( _EnterFriendsEmailAddress,"mark" + randomDate() + "waugh@bmail.com");
+        typeText( _EnterFriendsEmailAddress,loadProperty.getProperty( "FriendsEmailFirstPart" ) + randomDate() + loadProperty.getProperty( "FriendsEmailLastPart" ));
     }
     public void clickOnSendEmail(){
         //Click on SEND EMAIL

@@ -8,6 +8,9 @@ import static org.example.BasePage.driver;
 import static org.example.Utils.clickOnElement;
 
 public class BuildYourOwnComputer extends Utils {
+
+    LoadProperty loadProperty = new LoadProperty();
+
     private By _EmailFriend = By.xpath( "//form[@action=\"/build-your-own-computer\"]/div[2]/div[1]/div[2]/div[10]/div[3]" );
     private By _IntelPremiumDualCoreE2200Processor = By.xpath( "//select[@name=\"product_attribute_1\"]" );
     private By _RAM2Gb = By.xpath( "//select[@name=\"product_attribute_2\"]" );
@@ -26,12 +29,12 @@ public class BuildYourOwnComputer extends Utils {
     public void selectTheGHzIntelPremiumProcessorDualCoreE2200FromTheDropDownMenu(){
         //Select the Processor 2.2 GHz Intel Premium
         Select Processor = new Select( driver.findElement(_IntelPremiumDualCoreE2200Processor) );
-        Processor.selectByValue( "1" );
+        Processor.selectByValue(loadProperty.getProperty( "2.2GHzIntelPremiumDualCoreProcessor" ) );
     }
     public void selectThe2GbRAMFromTheDropDownMenu(){
         //Select the RAM 2GB
         Select RAM = new Select( driver.findElement( _RAM2Gb ) );
-        RAM.selectByValue( "3" );
+        RAM.selectByValue( loadProperty.getProperty( "RAM2GB" ) );
     }
     public void selectThe320GbHDD(){
         //select the HDD 320GB

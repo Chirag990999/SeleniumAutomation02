@@ -2,7 +2,7 @@ package org.example;
 
 import org.testng.annotations.Test;
 
-public class TestSuit extends BaseTest{
+public class TestSuit extends BaseTest {
     HomePage homePage = new HomePage();
     Registration registration = new Registration();
     RegistrationSuccessful registrationSuccessful = new RegistrationSuccessful();
@@ -11,10 +11,14 @@ public class TestSuit extends BaseTest{
     Computers computers = new Computers();
     Desktops desktops = new Desktops();
     ShoppingCart shoppingCart = new ShoppingCart();
+    ProductNikePage productNikePage = new ProductNikePage();
+    FacebookPage facebookpage = new FacebookPage();
+    NewRelease newRelease = new NewRelease();
 
 
+    //------------------------------------------------------------------------------------------------------------------
     @Test
-    public void userShouldBeRegisterSuccessfully(){
+    public void userShouldBeRegisterSuccessfully() {
 
         homePage.clickOnRegisterButton();
         registration.userEnterDetailsOnRegistrationPageSuccessfully();
@@ -22,9 +26,10 @@ public class TestSuit extends BaseTest{
 
 
     }
+
     //------------------------------------------------------------------------------------------------------------------
     @Test
-    public void userShouldEmailTheProductToTheFriendSuccessfully(){
+    public void userShouldEmailTheProductToTheFriendSuccessfully() {
         homePage.clickOnRegisterButton();
         registration.userEnterDetailsOnRegistrationPageSuccessfully();
         registrationSuccessful.userShouldVerifyThatRegistrationSuccessful();
@@ -36,9 +41,9 @@ public class TestSuit extends BaseTest{
         emailAFriend.verifyMessageHasBeenSentForTheProduct();
     }
 
-    //------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
     @Test
-    public void userShouldSelectTheProductAndAddToTheCartSuccessfully(){
+    public void userShouldSelectTheProductAndAddToTheCartSuccessfully() {
         homePage.selectComputersOption();
         computers.selectDesktopsOption();
         desktops.selectBuildYourOwnComputer();
@@ -53,19 +58,19 @@ public class TestSuit extends BaseTest{
         shoppingCart.verifyTheItemInTheShoppingCart();
     }
 
-    //-----------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
     @Test
-    public void userShouldBeAbleToSelectAndChangeTheCurrency(){
+    public void userShouldBeAbleToSelectAndChangeTheCurrency() {
         homePage.selectTheEuroCurrencyFromTheDropDownMenu();
         homePage.verifyTheProductPriceInEuroCurrency();
         homePage.selectTheUSDollarCurrencyFromTheDropDownMenu();
         homePage.verifyTheProductPriceInUsDollarCurrency();
     }
 
-    //----------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
 
     @Test
-    public void notRegisterUserShouldNotAbleToVOTE(){
+    public void notRegisterUserShouldNotAbleToVOTE() {
         homePage.selectGoodOptionInCommunityPoll();
         homePage.clickOnVOTEButton();
         homePage.verifyTheMessageThatOnlyRegisteredUsersCanVote();
@@ -77,5 +82,67 @@ public class TestSuit extends BaseTest{
         homePage.clickOnVOTEButton();
         homePage.verifyTheNumberOfVotesMessage();
     }
+    //------------------------------------------------------------------------------------------------------------------
+
+    @Test
+    public void getProductTitles() {
+        homePage.getProductTitles();
+
+    }
+    //------------------------------------------------------------------------------------------------------------------
+
+    @Test
+    public void selectTheFacebookAndVerifyTheURLOnPopUpWindow() {
+        homePage.selectTheFacebookAndVerifyTheURLOnPopUpWindow();
+        facebookpage.verifyFacebookUrlAndHandlePopUPWindow();
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+
+    @Test
+    public void verifyTheMessageOnAlertAndHandleAlert() {
+        homePage.verifyTheMessageOnAlertAndHandleAlert();
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+
+    @Test
+    public void verifyVariousAssertForNopCommerceNewReleaseAndComments() {
+        homePage.verifyTheNopCommerceNewReleaseOptionAndClickTheOption();
+        newRelease.verifyTheURLNopcommerceNewRelease();
+        newRelease.verifyTheNopCommerceNewReleaseMessageAboveCommentBox();
+        newRelease.enterTheDetailsInTitleBox();
+        newRelease.enterTheCommentInTheCommentBox();
+        newRelease.clickOnNewComment();
+        newRelease.verifyYourCommentInCommentsBox();
+        newRelease.verifyYourCommentIsAtLast();
+    }
+    //------------------------------------------------------------------------------------------------------------------
+
+    @Test
+    public void applySortByNameZtoAOptionAndVerifyTheProductInThatOrder() {
+        homePage.selectComputersOption();
+        computers.selectDesktopsOption();
+        desktops.applyTheFilterByNameZtoAThenVerifyTheProductInZtoAOrder();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    @Test
+    public void verifyTheSortByNameZTOAFunctionOnDesktopPage() {
+        homePage.selectComputersOption();
+        computers.selectDesktopsOption();
+        desktops.verifyProductNameInZToAOrderAfterAppliedFilerSortByNameZtoA();
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    @Test
+    public void searchTheProductNikeAndVerifyTheURLAndProductListContainsNike(){
+        homePage.nikeProductSelect();
+        productNikePage.verifyTheURL();
+        productNikePage.checkTheProductsContainsNikeBrand();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 }
