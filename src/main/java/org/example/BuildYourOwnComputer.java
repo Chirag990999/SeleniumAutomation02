@@ -1,6 +1,5 @@
 package org.example;
 
-import com.sun.javafx.util.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 

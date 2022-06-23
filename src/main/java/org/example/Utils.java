@@ -16,11 +16,11 @@ import java.util.Date;
 
 public class Utils extends BasePage{
     public static void clickOnElement(By by) {
-        driver.findElement( by ).click();
+        driver.findElement(by).click();
     }
 
     public static void typeText(By by, String text) {
-        driver.findElement( by ).sendKeys( text );
+        driver.findElement(by).sendKeys( text );
     }
 
 
