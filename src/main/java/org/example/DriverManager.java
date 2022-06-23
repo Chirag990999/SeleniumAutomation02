@@ -84,10 +84,11 @@ public class DriverManager extends Utils {
     }
 
 
-    public void Quit () {
+    public void quit () {
 
         driver.quit();
     }
+
 
 
 }
